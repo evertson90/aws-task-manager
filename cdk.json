@@ -1,5 +1,5 @@
 {
-  "app": "mvn -e -q compile exec:java -N",
+  "app": "mvn -e -q compile exec:java -pl cdk-app",
   "watch": {
     "include": ["**"],
     "exclude": [
