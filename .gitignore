@@ -1,4 +1,30 @@
-docs/
-.idea/
-cdk.out/
+# Build and generated files
 target/
+cdk.out/
+*.jar
+*.class
+*.log
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node modules and CDK cache
+node_modules/
+.cdk.staging/
+.cdk-metadata.json
+
+# Environment and credentials files
+.env
+.env.*
+.aws/
+.aws-credentials
+aws-credentials
+
+# Local project files
+docs/
+dist/
