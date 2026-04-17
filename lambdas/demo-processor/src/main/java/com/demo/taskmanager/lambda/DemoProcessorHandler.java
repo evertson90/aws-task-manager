@@ -15,6 +15,8 @@ public class DemoProcessorHandler implements RequestHandler<Map<String, Object>,
     private final EventBridgeClient eventBridge = EventBridgeClient.create();
     private final Gson gson = new Gson();
     private static final String SOURCE = "com.demo.taskmanager";
+    private static final String EVENT_BUS_NAME = System.getenv("EVENT_BUS_NAME");
+
 
     @Override
     @SuppressWarnings("unchecked")
@@ -51,6 +53,7 @@ public class DemoProcessorHandler implements RequestHandler<Map<String, Object>,
         }
 
         PutEventsRequestEntry entry = PutEventsRequestEntry.builder()
+                .eventBusName(EVENT_BUS_NAME)
                 .source(SOURCE)
                 .detailType("TaskUpdatedEvent")
                 .detail(gson.toJson(detail))

@@ -55,11 +55,13 @@ public class TaskStatusPublisherHandler implements RequestHandler<DynamodbEvent,
                 detail.addProperty("result", newImage.get("result").getS());
             }
 
+            String detailJson = gson.toJson(detail);
+            
             PutEventsRequestEntry entry = PutEventsRequestEntry.builder()
                     .eventBusName(EVENT_BUS_NAME)
                     .source(SOURCE)
                     .detailType(detailType)
-                    .detail(gson.toJson(detail))
+                    .detail(detailJson)
                     .build();
 
             eventBridge.putEvents(PutEventsRequest.builder()
