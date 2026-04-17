@@ -17,6 +17,7 @@ public class TaskStatusPublisherHandler implements RequestHandler<DynamodbEvent,
     private final EventBridgeClient eventBridge = EventBridgeClient.create();
     private final Gson gson = new Gson();
     private static final String SOURCE = "com.demo.taskmanager";
+    private static final String EVENT_BUS_NAME = System.getenv("EVENT_BUS_NAME");
 
     @Override
     public Void handleRequest(DynamodbEvent event, Context context) {
@@ -55,6 +56,7 @@ public class TaskStatusPublisherHandler implements RequestHandler<DynamodbEvent,
             }
 
             PutEventsRequestEntry entry = PutEventsRequestEntry.builder()
+                    .eventBusName(EVENT_BUS_NAME)
                     .source(SOURCE)
                     .detailType(detailType)
                     .detail(gson.toJson(detail))

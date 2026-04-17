@@ -70,7 +70,7 @@ cdk deploy --all
 # Create a task
 curl -X POST https://<api-id>.execute-api.<region>.amazonaws.com/prod/tasks \
   -H "Content-Type: application/json" \
-  -d '{"tenantId": "tenant-1", "type": "EXPORT", "requestPayload": {"query": "SELECT *"}}'
+  -d '{"tenantId": "tenant-1", "type": "EXPORT", "requestPayload": {"key": "value"}}'
 
 # Poll for status (use taskId from response above)
 curl https://<api-id>.execute-api.<region>.amazonaws.com/prod/tasks/tenant-1/<taskId>
