@@ -30,8 +30,6 @@ public class DemoProcessorStack extends Stack {
                 .environment(Map.of("EVENT_BUS_NAME", eventBus.getEventBusName()))
                 .build();
 
-        System.out.println("test");
-
         eventBus.grantPutEventsTo(demoProcessor);
 
         // EventBridge Rule
